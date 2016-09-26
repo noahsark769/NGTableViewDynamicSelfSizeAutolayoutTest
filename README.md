@@ -5,8 +5,8 @@ This is a demonstration of a problem I have with Autolayout inside UITableViewCe
 
 What I would expect it to look like:
 
-![Expected](expected.png)
+![Expected](expected.png | width=100)
 
 What it actually looks like:
 
-![Actual](actual.png)
+![Actual](actual.png | width=100)
