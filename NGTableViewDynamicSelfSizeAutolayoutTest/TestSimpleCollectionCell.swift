@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// A Cell which contains a TestSimpleCollectionViewWithAutolayout. Purely for purposes of displaying
+/// a TestSimpleCollectionViewWithAutolayout inside a cell. This class is almost exactly the same as
+/// TestCustomCell.
 class TestSimpleCollectionCell: UITableViewCell {
   let collectionView = TestSimpleCollectionViewWithAutolayout()
 

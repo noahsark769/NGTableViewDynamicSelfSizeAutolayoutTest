@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A UITableViewCell that contains a single TestStaticCollectionView.
 class TestCustomCell: UITableViewCell {
   let collectionView = TestStaticCollectionView()
 

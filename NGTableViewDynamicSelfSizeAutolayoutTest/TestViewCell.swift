@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Cell containing a variable height LabelWrapperView, which contains a variable height Label.
+/// Call setModel to set its text.
 class TestViewCell: UITableViewCell {
   let label = LabelWrapperView()
 
@@ -23,21 +25,6 @@ class TestViewCell: UITableViewCell {
 
   func setModel(_ text: String) {
     label.setText(text: text)
-  }
-
-  override func layoutSubviews() {
-    print("TestViewCell layoutSubviews with label.label.intrinsicContentSize:", label.label.intrinsicContentSize)
-    super.layoutSubviews()
-  }
-
-  override func updateConstraints() {
-    print("TestViewCell updateConstraints with label.label.intrinsicContentSize:", label.label.intrinsicContentSize)
-    super.updateConstraints()
-  }
-
-  override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-    let rtn = super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
-    return rtn
   }
 
   private func installConstraints() {

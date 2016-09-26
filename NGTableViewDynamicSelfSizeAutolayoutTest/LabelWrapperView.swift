@@ -64,6 +64,7 @@ class WrappedLabel: UILabel {
   }
 }
 
+/// A view which is simply a wrapper around a UILabel. Call setText to set the label's text.
 class LabelWrapperView: UIView {
   let label: WrappedLabel = {
     let view = WrappedLabel()
@@ -90,15 +91,5 @@ class LabelWrapperView: UIView {
     label.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label": label]))
     NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label": label]))
-  }
-
-  override func layoutSubviews() {
-    print("LabelWrapperView layoutSubviews with label.intrinsicContentSize:", label.intrinsicContentSize)
-    super.layoutSubviews()
-  }
-
-  override func updateConstraints() {
-    print("LabelWrapperView updateConstraints with label.intrinsicContentSize:", label.intrinsicContentSize)
-    super.updateConstraints()
   }
 }

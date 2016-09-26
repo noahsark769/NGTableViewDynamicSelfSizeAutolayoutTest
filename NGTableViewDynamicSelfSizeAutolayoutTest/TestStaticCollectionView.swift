@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// A static collection view. It aims to contain multiple subviews, all of which should define an
+/// intrinsicContentSize, and wrap them onto a new line if they exceed this view's width. Currently
+/// does not work correctly inside of table view cells.
 class TestStaticCollectionView: UIView {
   init() {
     super.init(frame: .zero)

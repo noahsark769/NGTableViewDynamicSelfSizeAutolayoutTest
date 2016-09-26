@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// A "simple" collection view containing exactly three ColorRectViews of R, G, B. For comparison purposes
+/// to TestStaticCollectionView, which contains a variable number of subviews and lays them out differently.
 class TestSimpleCollectionViewWithAutolayout: UIView {
   let color1 = ColorRectView(color: .red)
   let color2 = ColorRectView(color: .blue)

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Cell containing a variable height Label.
+/// Call setModel to set its text.
 class TestViewCellNoWrap: UITableViewCell {
   let label: UILabel = {
     let view = UILabel()

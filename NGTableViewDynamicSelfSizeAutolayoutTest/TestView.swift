@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// ViewController's view. Contains a table view and serves as a static table view data source/delegate.
 class TestView: UIView {
   let text: String
   private let tableView = UITableView()

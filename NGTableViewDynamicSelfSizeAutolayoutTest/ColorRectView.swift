@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A static block with a specified background color.
 class ColorRectView: UIView {
   override var intrinsicContentSize: CGSize {
     return CGSize(width: 25, height: 20)
