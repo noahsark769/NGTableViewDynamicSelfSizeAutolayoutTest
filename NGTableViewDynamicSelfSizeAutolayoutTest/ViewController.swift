@@ -10,8 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+  override func loadView() {
+    super.loadView()
+    self.view = TestView(text: "This is a long sentence. It might take up a lot of room on the screen, and the hope is that the label will know that it should cut itself off at two lines.")
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    UserDefaults.standard.set(false, forKey: "UIViewShowAlignmentRects")
+    UserDefaults.standard.synchronize()
     // Do any additional setup after loading the view, typically from a nib.
   }
 
