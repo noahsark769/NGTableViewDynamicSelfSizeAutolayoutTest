@@ -5,8 +5,8 @@ This is a demonstration of a problem I have with Autolayout inside UITableViewCe
 
 What I would expect it to look like:
 
-![Expected](expected.png)
+ <img src="https://github.com/noahsark769/NGTableViewDynamicSelfSizeAutolayoutTest/blob/master/expected.png" alt="alt text" width="200">
 
 What it actually looks like:
 
-![Actual](actual.png)
+ <img src="https://github.com/noahsark769/NGTableViewDynamicSelfSizeAutolayoutTest/blob/master/actual.png" alt="alt text" width="200">
