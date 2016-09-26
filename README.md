@@ -1,5 +1,5 @@
 # What is this?
-This is a demonstration of a problem I have with Autolayout inside UITableViewCells. The issue has to do with cells containing views whose height depends on their width (similar to how UILabels inside of UITableViewCells work).
+This is a demonstration of a problem I have with Autolayout inside UITableViewCells. [StackOverflow question here](http://stackoverflow.com/questions/39712370/custom-view-that-line-breaks-subviews-in-a-uitableviewcell). The issue has to do with cells containing views whose height depends on their width (similar to how UILabels inside of UITableViewCells work).
 
 `TestStaticCollectionView` tries to contain multiple smaller views, all with an intrinsic content size of their own, and display them inside a table view cell. However, its height is calculated incorrectly, and I'm not sure how to get it to work correctly.
 
