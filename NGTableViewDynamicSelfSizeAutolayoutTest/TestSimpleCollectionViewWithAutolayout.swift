@@ -28,10 +28,6 @@ class TestSimpleCollectionViewWithAutolayout: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  override var alignmentRectInsets: UIEdgeInsets {
-    return UIEdgeInsets(top: 50, left: 50, bottom: 50, right : 50)
-  }
-
   override func alignmentRect(forFrame frame: CGRect) -> CGRect {
     let alignmentRect = super.alignmentRect(forFrame: frame)
     print("SIMPLE VIEW calculating alignment rect %@ for frame %@", alignmentRect, frame)

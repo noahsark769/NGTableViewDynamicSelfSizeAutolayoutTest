@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    UserDefaults.standard.set(false, forKey: "UIViewShowAlignmentRects")
+    UserDefaults.standard.set(true, forKey: "UIViewShowAlignmentRects")
     UserDefaults.standard.synchronize()
     // Do any additional setup after loading the view, typically from a nib.
   }

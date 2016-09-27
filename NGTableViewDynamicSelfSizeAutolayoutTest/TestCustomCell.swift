@@ -31,10 +31,21 @@ class TestCustomCell: UITableViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
+    self.contentView.setNeedsLayout()
+    self.contentView.layoutIfNeeded()
+    super.layoutSubviews()
   }
 
   override func updateConstraints() {
     super.updateConstraints()
+  }
+
+  override func layoutMarginsDidChange() {
+    super.layoutMarginsDidChange()
+    self.setNeedsUpdateConstraints()
+    self.updateConstraintsIfNeeded()
+    self.contentView.setNeedsLayout()
+    self.contentView.layoutIfNeeded()
   }
 
   private func installConstraints() {

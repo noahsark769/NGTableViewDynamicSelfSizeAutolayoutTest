@@ -14,11 +14,14 @@ import UIKit
 class TestStaticCollectionView: UIView {
   init() {
     super.init(frame: .zero)
+    heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 0)
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  private var heightConstraint: NSLayoutConstraint? = nil
 
   private(set) var arrangedSubviews: [UIView] = []
   private(set) var rowViews: [UIView] = []
@@ -48,11 +51,30 @@ class TestStaticCollectionView: UIView {
 
     print("YE OLD INVALIDATION STEP")
     invalidateIntrinsicContentSize()
+
+    print("YE OLD UPDATE CONSTRAINT")
+    heightConstraint!.constant = self.intrinsicContentSize.height
+//    heightConstraint!.isActive = true
+    setNeedsUpdateConstraints()
+    updateConstraintsIfNeeded()
+  }
+
+//  override var alignmentRectInsets: UIEdgeInsets {
+//    if self.frame.width != 0 {
+//      preferredMaxLayoutWidth = self.frame.width
+//    }
+//    return UIEdgeInsets(top: 0, left: 0, bottom: 0, right : 0)
+//  }
+
+  override func alignmentRect(forFrame frame: CGRect) -> CGRect {
+    print("????? FRAME? ", frame)
+    return super.alignmentRect(forFrame: frame)
   }
 
   override func layoutSubviews() {
-    print("YE OLD WIDTH: ", self.frame.width)
-    preferredMaxLayoutWidth = self.frame.width
+    super.layoutSubviews()
+    print("YE OLD WIDTH: ", self.bounds.width)
+    preferredMaxLayoutWidth = self.bounds.width
 
     if let maximumWidth = preferredMaxLayoutWidth {
       rearrangeViews(using: maximumWidth)
@@ -105,7 +127,7 @@ class TestStaticCollectionView: UIView {
   }
 
   override var intrinsicContentSize: CGSize {
-    guard let maximumWidth = preferredMaxLayoutWidth else {
+    guard let maximumWidth = preferredMaxLayoutWidth, !arrangedSubviews.isEmpty else {
       print("YE OLD DEFAULT INTRINSIC CONTENT SIZE: ", CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric))
       return CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
     }

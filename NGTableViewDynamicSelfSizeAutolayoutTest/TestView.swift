@@ -12,6 +12,7 @@ import UIKit
 class TestView: UIView {
   let text: String
   private let tableView = UITableView()
+  var prototypeCell: TestCustomCell? = nil
 
   init(text: String) {
     self.text = text
@@ -68,6 +69,22 @@ extension TestView: UITableViewDataSource {
 
 extension TestView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    if indexPath.row % 4 == 3 {
+//      if self.prototypeCell == nil {
+//        prototypeCell = tableView.dequeueReusableCell(withIdentifier: String(describing: TestCustomCell.self)) as! TestCustomCell
+//      }
+//      guard let cell = self.prototypeCell else {
+//        fatalError("didn't have a prototype cell even though we just set one")
+//      }
+//  cell.setModel([.red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue, .red, .green, .blue])
+//
+//      cell.layoutSubviews()
+//      cell.contentView.layoutSubviews()
+//      cell.collectionView.layoutSubviews()
+//      let size = cell.collectionView.intrinsicContentSize
+//      print("YARR THE HARDCODED HEIGHT: ", size.height)
+//      return size.height
+//    }
     return UITableViewAutomaticDimension
   }
 
