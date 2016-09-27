@@ -25,16 +25,38 @@ class TestStaticCollectionView: UIView {
   private(set) var tagViewHeight: CGFloat = 0
   private(set) var rows: Int = 0
 
+  private var _preferredMaxLayoutWidth: CGFloat?
   var preferredMaxLayoutWidth: CGFloat? {
-    didSet {
-      rearrangeViews(using: preferredMaxLayoutWidth ?? frame.width)
+    get {
+      return _preferredMaxLayoutWidth
+    }
+    set {
+      if let width = newValue {
+        __setPreferredMaxLayoutWidth(width)
+      } else {
+        _preferredMaxLayoutWidth = newValue
+      }
     }
   }
 
-  override func layoutSubviews() {
-    super.layoutSubviews()
+  private func __setPreferredMaxLayoutWidth(_ width: CGFloat) {
+    if let maximumWidth = _preferredMaxLayoutWidth, maximumWidth == width {
+      return
+    }
+    print("YE OLD PREFERRED MAX LAYOUT WIDTH UPDATE", width)
+    _preferredMaxLayoutWidth = width
 
-    rearrangeViews(using: preferredMaxLayoutWidth ?? frame.width)
+    print("YE OLD INVALIDATION STEP")
+    invalidateIntrinsicContentSize()
+  }
+
+  override func layoutSubviews() {
+    print("YE OLD WIDTH: ", self.frame.width)
+    preferredMaxLayoutWidth = self.frame.width
+
+    if let maximumWidth = preferredMaxLayoutWidth {
+      rearrangeViews(using: maximumWidth)
+    }
     super.layoutSubviews()
   }
 
@@ -83,13 +105,27 @@ class TestStaticCollectionView: UIView {
   }
 
   override var intrinsicContentSize: CGSize {
-    var height = rowViews.reduce(0) { total, view in
-      total + view.frame.size.height + 0
+    guard let maximumWidth = preferredMaxLayoutWidth else {
+      print("YE OLD DEFAULT INTRINSIC CONTENT SIZE: ", CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric))
+      return CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
     }
-    if rows > 0 {
-      height -= 0
+
+    let intrinsicContentSizes: [CGSize] = arrangedSubviews.map { $0.intrinsicContentSize }
+    var currentRowWidth: CGFloat = 0
+    var currentHeight: CGFloat = 0
+
+    for size in intrinsicContentSizes {
+      if currentRowWidth + size.width > maximumWidth {
+        currentHeight += size.height // assumes all are the same height
+        // assumes no interline or interlabel spacing
+        currentRowWidth = 0
+      }
+      currentRowWidth += size.width
     }
-    let size = CGSize(width: preferredMaxLayoutWidth ?? frame.width, height: height)
+    currentHeight += intrinsicContentSizes.last!.height
+
+    let size = CGSize(width: maximumWidth, height: currentHeight)
+    print("YE OLD INTRINSIC CONTENT SIZE: ", size)
     return size
   }
 

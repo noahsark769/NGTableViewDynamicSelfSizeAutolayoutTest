@@ -22,15 +22,15 @@ import UIKit
 
 class WrappedLabel: UILabel {
   override func layoutSubviews() {
-    print("WrappedLabel layoutSubviews with intrinsicContentSize:", self.intrinsicContentSize)
+//    print("WrappedLabel layoutSubviews with intrinsicContentSize:", self.intrinsicContentSize)
     super.layoutSubviews()
-    print("~WrappedLabel layoutSubviews with intrinsicContentSize:", self.intrinsicContentSize)
+//    print("~WrappedLabel layoutSubviews with intrinsicContentSize:", self.intrinsicContentSize)
   }
 
   override func updateConstraints() {
-    print("WrappedLabel updateConstraints with intrinsicContentSize:", self.intrinsicContentSize)
+//    print("WrappedLabel updateConstraints with intrinsicContentSize:", self.intrinsicContentSize)
     super.updateConstraints()
-    print("~WrappedLabel updateConstraints with intrinsicContentSize:", self.intrinsicContentSize)
+//    print("~WrappedLabel updateConstraints with intrinsicContentSize:", self.intrinsicContentSize)
   }
 
   override var intrinsicContentSize: CGSize {
@@ -59,7 +59,7 @@ class WrappedLabel: UILabel {
 
   override func alignmentRect(forFrame frame: CGRect) -> CGRect {
     let alignmentRect = super.alignmentRect(forFrame: frame)
-    print("LABEL calculating alignment rect %@ for frame %@", alignmentRect, frame)
+//    print("LABEL calculating alignment rect %@ for frame %@", alignmentRect, frame)
     return alignmentRect
   }
 }

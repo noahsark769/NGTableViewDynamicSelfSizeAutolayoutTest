@@ -29,6 +29,14 @@ class TestCustomCell: UITableViewCell {
     }
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+  }
+
+  override func updateConstraints() {
+    super.updateConstraints()
+  }
+
   private func installConstraints() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[collectionView]-|", options: [], metrics: nil, views: ["collectionView": collectionView]))
