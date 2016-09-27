@@ -11,7 +11,8 @@ import UIKit
 /// A static block with a specified background color.
 class ColorRectView: UIView {
   override var intrinsicContentSize: CGSize {
-    return CGSize(width: 25, height: 20)
+    let diceRoll = Int(arc4random_uniform(50) + 1)
+    return CGSize(width: diceRoll, height: 20)
   }
 
   init(color: UIColor) {

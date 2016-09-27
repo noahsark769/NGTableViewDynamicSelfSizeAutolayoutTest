@@ -31,9 +31,6 @@ class TestCustomCell: UITableViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    self.contentView.setNeedsLayout()
-    self.contentView.layoutIfNeeded()
-    super.layoutSubviews()
   }
 
   override func updateConstraints() {
@@ -41,16 +38,13 @@ class TestCustomCell: UITableViewCell {
   }
 
   override func layoutMarginsDidChange() {
-    super.layoutMarginsDidChange()
-    self.setNeedsUpdateConstraints()
-    self.updateConstraintsIfNeeded()
-    self.contentView.setNeedsLayout()
+    print("YE OLD LAYOUT MARGINS DID CHANGE TO ", layoutMargins)
     self.contentView.layoutIfNeeded()
   }
 
   private func installConstraints() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[collectionView]-|", options: [], metrics: nil, views: ["collectionView": collectionView]))
-    contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[collectionView]-|", options: [], metrics: nil, views: ["collectionView": collectionView]))
+    contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[collectionView]-40-|", options: [], metrics: nil, views: ["collectionView": collectionView]))
   }
 }
