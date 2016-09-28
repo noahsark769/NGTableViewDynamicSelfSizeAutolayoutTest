@@ -48,10 +48,6 @@ class TestStaticCollectionView: UIView {
 
     print("YE OLD INVALIDATION STEP")
     invalidateIntrinsicContentSize()
-
-    print("YE OLD UPDATE CONSTRAINT")
-    setNeedsUpdateConstraints()
-    updateConstraintsIfNeeded()
   }
 
   override func layoutSubviews() {
@@ -62,7 +58,6 @@ class TestStaticCollectionView: UIView {
     if let maximumWidth = preferredMaxLayoutWidth {
       rearrangeViews(using: maximumWidth)
     }
-    invalidateIntrinsicContentSize()
   }
 
   func rearrangeViews(using maximumWidth: CGFloat) {
@@ -111,7 +106,6 @@ class TestStaticCollectionView: UIView {
 
   override var intrinsicContentSize: CGSize {
     guard let maximumWidth = preferredMaxLayoutWidth, !arrangedSubviews.isEmpty else {
-      print("YE OLD DEFAULT INTRINSIC CONTENT SIZE: ", CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric))
       return CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
     }
 
